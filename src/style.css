@@ -1,0 +1,19 @@
+.el-tabs {
+    padding-top: 3px;
+    border-top: 1px solid #e4e7ed;
+}
+.el-tabs--right .el-tabs__header.is-right {
+    height: calc(100vh - 20px);
+}
+.el-tabs__nav-scroll {
+    padding-top: 20px;
+}
+.el-tabs__item {
+    user-select: none;
+}
+.el-card {
+    position: fixed;
+    top: 18px;
+    left: 10px;
+    width: 350px;
+}

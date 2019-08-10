@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+        <title>cashflow</title>
+        <link rel="shortcut icon" href="icon.jfif" type="image/pipeg">
+        <link rel="stylesheet" href="relyOn/element-ui/lib/theme-chalk/index.css">
+        <link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+	<!--作者：刘昊；
+	时间：19.08.04-
+    描述：穷爸爸富爸爸；-->
+    <div id="app">
+        <el-tabs v-model="editableTabsValue" tab-position="right">
+            <el-tab-pane v-for="(item, index) in editableTabs"
+                :key="item.name"
+                :label="item.title"
+                :name="item.name">
+                <div style="height: calc(100vh - 20px)">
+
+                </div>
+            </el-tab-pane>
+        </el-tabs>
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <span>{{editableTabsTitle.title}}</span>
+                <el-button style="float: right; padding: 3px 0" type="text">折叠</el-button>
+
+                <!-- <el-button type="primary" icon="el-icon-check"></el-button>
+                <el-button type="primary" icon="el-icon-close"></el-button> -->
+            </div>
+            <div v-for="o in 4" :key="o" class="text item">
+                {{'列表内容 ' + o }}
+            </div>
+        </el-card>
+        <!-- <span class="demonstration">date</span>
+        <el-date-picker
+            v-model="value8"
+            type="date"
+            placeholder="选择日期">
+        </el-date-picker> -->
+    </div>
+    </body>
+    <script type="text/javascript" src="relyOn/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="relyOn/vue.js"></script>
+    <script type="text/javascript" src="relyOn/axios.min.js"></script>
+    <script type="text/javascript" src="relyOn/element-ui/lib/index.js"></script>
+    <script type="text/javascript" src="relyOn/echarts.min.js"></script>
+    <script type="text/javascript" src="action.js"></script>
+</html>
