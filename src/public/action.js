@@ -3,19 +3,23 @@ var app = new Vue({
     el: '#app',
     data: {
         value8: '',
-        editableTabsValue: '1',
+        editableTabsValue: '2',
         editableTabs:[
             {
                 title: '收入',
+                key: 'income',
                 name: '1'
             }, {
                 title: '支出',
+                key: 'expenditure',
                 name: '2'
             }, {
                 title: '资产',
+                key: 'assets',
                 name: '3'
             }, {
                 title: '负债',
+                key: 'liabilities',
                 name: '4'
             }
         ]
@@ -27,7 +31,7 @@ var app = new Vue({
         editableTabsTitle:function() {
             let title = ' '
             this.editableTabs.forEach(element => {
-                if (element.name == this.editableTabsValue){
+                if (element.name === this.editableTabsValue){
                     title = element
                 }
             });
@@ -36,17 +40,15 @@ var app = new Vue({
     },
     methods: {
         getlist(){
-            axios.get('/getlist?ID=12345')
+            let type = this.editableTabsTitle.key
+            axios.get(`/getlist?type=${type}`)
             .then(function (response) {
-                // handle success
                 console.log(response);
             })
             .catch(function (error) {
-                // handle error
                 console.log(error);
             })
             .finally(function () {
-                // always executed
             });
         }
     },

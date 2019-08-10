@@ -3,16 +3,16 @@
 	<head>
 		<meta charset="utf-8" />
         <title>cashflow</title>
-        <link rel="shortcut icon" href="icon.jfif" type="image/pipeg">
+        <link rel="shortcut icon" href="public/icon.jfif" type="image/pipeg">
         <link rel="stylesheet" href="relyOn/element-ui/lib/theme-chalk/index.css">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="public/style.css">
 	</head>
 	<body>
 	<!--作者：刘昊；
 	时间：19.08.04-
     描述：穷爸爸富爸爸；-->
     <div id="app">
-        <el-tabs v-model="editableTabsValue" tab-position="right">
+        <el-tabs v-model="editableTabsValue" tab-position="right" @tab-click="getlist">
             <el-tab-pane v-for="(item, index) in editableTabs"
                 :key="item.name"
                 :label="item.title"
@@ -47,5 +47,5 @@
     <script type="text/javascript" src="relyOn/axios.min.js"></script>
     <script type="text/javascript" src="relyOn/element-ui/lib/index.js"></script>
     <script type="text/javascript" src="relyOn/echarts.min.js"></script>
-    <script type="text/javascript" src="action.js"></script>
+    <script type="text/javascript" src="public/action.js"></script>
 </html>
