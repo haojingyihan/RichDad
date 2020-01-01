@@ -1,0 +1,97 @@
+[{
+    "name": "工商银行",
+    "key": "gongshangyinhang",
+    "file": "gongshangyinhang.svg"
+  },
+  {
+    "name": "华夏银行",
+    "key": "huaxiayinhang",
+    "file": "huaxiayinhang.svg"
+  },
+  {
+    "name": "建设银行",
+    "key": "jiansheyinhang",
+    "file": "jiansheyinhang.svg"
+  },
+  {
+    "name": "交通银行",
+    "key": "jiaotongyinhang",
+    "file": "jiaotongyinhang.svg"
+  },
+  {
+    "name": "农业银行",
+    "key": "nonghang",
+    "file": "nonghang.svg"
+  },
+  {
+    "name": "平安银行",
+    "key": "pinganyinhang",
+    "file": "pinganyinhang.svg"
+  },
+  {
+    "name": "浦发银行",
+    "key": "pufayinhang",
+    "file": "pufayinhang.svg"
+  },
+  {
+    "name": "泰安银行",
+    "key": "taianyinhang",
+    "file": "taianyinhang.svg"
+  },
+  {
+    "name": "兴业银行",
+    "key": "xingyeyinhang",
+    "file": "xingyeyinhang.svg"
+  },
+  {
+    "name": "招商银行",
+    "key": "zhaoshangyinhang",
+    "file": "zhaoshangyinhang.svg"
+  },
+  {
+    "name": "中国民生银行",
+    "key": "zhongguominshengyinhang",
+    "file": "zhongguominshengyinhang.svg"
+  },
+  {
+    "name": "中国银行",
+    "key": "zhongguoyinhang",
+    "file": "zhongguoyinhang.svg"
+  },
+  {
+    "name": "中国邮政储蓄银行",
+    "key": "zhongguoyouzhengchuxuyinhang",
+    "file": "zhongguoyouzhengchuxuyinhang.svg"
+  },
+  {
+    "name": "中信银行",
+    "key": "zhongxinyinhang",
+    "file": "zhongxinyinhang.svg"
+  },
+  {
+    "name": "微信支付",
+    "key": "weixin",
+    "file": "weixin.svg"
+  },
+  {
+    "name": "支付宝",
+    "key": "zhifubao",
+    "file": "zhifubao.svg"
+  },
+  {
+    "name": "饮料",
+    "key": "yinliao",
+    "file": "yinliao.svg"
+  },
+  {
+    "name": "热饮",
+    "key": "reyin",
+    "file": "reyin.svg"
+  },
+  {
+    "name": "话费充值",
+    "key": "huafei",
+    "file": "huafei.svg"
+  }
+
+]

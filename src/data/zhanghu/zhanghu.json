@@ -1,0 +1,54 @@
+[{
+    "name": "支付宝",
+    "ionic": "zhifubao",
+    "has": false,
+    "children": [{
+        "name": "花呗余额",
+        "ionic": "",
+        "has": 6838.09
+      },
+      {
+        "name": "余额宝",
+        "ionic": "",
+        "has": 472.66
+      },
+      {
+        "name": "理财产品",
+        "ionic": "",
+        "has": 1003.68
+      },
+      {
+        "name": "黄金",
+        "ionic": "",
+        "has": 546.65
+      }
+    ]
+
+  },
+  {
+    "name": "微信",
+    "ionic": "weixin",
+    "has": 39.52
+  },
+  {
+    "name": "交通卡",
+    "ionic": "",
+    "has": 23.80
+  },
+  {
+    "name": "银行卡",
+    "ionic": "",
+    "has": false,
+    "children": [{
+        "name": "招商银行",
+        "ionic": "zhaoshangyinhang",
+        "has": 4.00
+      },
+      {
+        "name": "建设银行",
+        "ionic": "jiansheyinhang",
+        "has": 1.36
+      }
+    ]
+  }
+]
