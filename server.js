@@ -2,19 +2,6 @@ const express = require('express');
 const app = express();
 var fs = require("fs");
 app.use('/', express.static('./src/'));
-const tableTabs = [{
-  key: 'jilu',
-  file: 'zhichu/'
-}, {
-  key: 'expenditure',
-  file: 'expenditureData.json'
-}, {
-  key: 'assets',
-  file: 'assetsData.json'
-}, {
-  key: 'liabilities',
-  file: 'liabilitiesData.json'
-}];
 
 function readFileSync(type) {
 
@@ -29,6 +16,12 @@ app.get('/getData', (req, res) => {
 })
 app.get('/getImg', (req, res) => {
   let data = fs.readFileSync(`src/ionic/all.json`);
+  let obj = JSON.parse(data.toString())
+  res.header("Content-Type", "application/json;charset=utf-8");
+  res.send(obj)
+})
+app.get('/getZhanghu', (req, res) => {
+  let data = fs.readFileSync(`src/data/zhanghu/zhanghu.json`);
   let obj = JSON.parse(data.toString())
   res.header("Content-Type", "application/json;charset=utf-8");
   res.send(obj)

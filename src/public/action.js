@@ -3,11 +3,18 @@ var app = new Vue({
   data: {
     dataValue: new Date(),
     card: false,
-    imgData: [],
+    timelinereverse: true,
+    imgData: {},
+    zhanghuData: {},
+    zhanghuShow: [],
+    defaultProps: {
+      children: 'children',
+      label: 'name'
+    },
+    zhanghuetubiao:{},
     loadingtimeline: true,
-
     timelineData: [],
-    editableTabsValue: '1',
+    editableTabsValue: '2',
     editableTabs: [{
         title: '收支记录',
         key: 'shouzhi',
@@ -26,7 +33,13 @@ var app = new Vue({
   },
   async created() {
     await this.getImg()
+    await this.getZhanghu()
     await this.getData()
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.getZhanghuEcharts()
+    })
   },
   computed: {
     editableTabsTitle: function () {
@@ -39,8 +52,65 @@ var app = new Vue({
       return title
     }
   },
+  filters: {
+    translateNum(num) {
+      num = (num || 0).toString();
+      let number = 0,
+          floatNum = '',
+          intNum = '';
+      // 判断是否有小数位，有则截取小数点后的数字
+      if (num.indexOf('.') > 0) {
+        number = num.indexOf('.'); // 获取小数点出现的位置
+        floatNum = num.substr(number); // 截取arr.substr(form, length)
+        intNum = num.substring(0,number); // 截取arr.substring(start, end)
+      } else {
+        intNum = num;
+      }
+      let result = [],
+          counter = 0;
+      intNum = intNum.split('');
+      // 利用3的倍数，向数组插入','
+      for (let i = intNum.length - 1; i >= 0; i--) {
+        counter++;
+        result.unshift(intNum[i]);
+        if (!(counter % 3) && i != 0) { result.unshift(','); }
+      }
+      return result.join('') + floatNum || '';
+    }
+  },
   methods: {
+    getZhanghuEcharts() {
+      var myecharts = echarts.init(document.getElementById('zhanghuecharts'));
+      const option = {
+        title: {
+            text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        legend: {
+            data:['销量']
+        },
+        xAxis: {
+            data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+      };
+
+      // 使用刚指定的配置项和数据显示图表。
+      myecharts.setOption(option);
+    },
     getData() {
+      if(this.editableTabsValue == 1){
+        this.getTimeLineData()
+      } else if (this.editableTabsValue == 2) {
+
+      }
+    },
+    getTimeLineData() {
       const time = new Date()
       const fileName = `${time.getFullYear()}.${time.getMonth()}.json`
       axios.get(`/getData?fileName=${fileName}`)
@@ -48,16 +118,10 @@ var app = new Vue({
           let data = res.data.flat(Infinity)
           this.timelineData = data
           this.timelineData.forEach(item => {
-            this.imgData.forEach(ite => {
-              if (ite.key === item.ionic) {
-                item.allfile = ite.allfile
-              }
-            })
-            item = Object.assign({}, item)
+            item.mainfile = this.imgData[item.ionic]
+            item.from_to = this.zhanghuData[item.from || item.to]
           })
           this.loadingtimeline = false
-          console.log(this.timelineData)
-          console.log(this.editableTabs)
         })
         .catch(function (error) {
           console.log(error);
@@ -67,12 +131,39 @@ var app = new Vue({
     getImg() {
       axios.get('/getImg')
         .then(res => {
-          this.imgData = res.data
-          this.imgData.forEach(item => {
-            item.allfile = `ionic/${item.file}`
+          const data = res.data
+          data.forEach(item => {
+            this.imgData[item.key] = `ionic/${item.file}`
           })
-
-          console.log(this.editableTabsTitle)
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+        .finally(function () {});
+    },
+    getZhanghu() {
+      axios.get('/getZhanghu')
+        .then(res => {
+          const data = res.data
+          console.log(data)
+          this.zhanghuShow = data
+          data.forEach(item => {
+            if(item.children) {
+              item.children.forEach(ite => {
+                this.zhanghuData[ite.key] = {
+                  ionic: ite.ionic,
+                  name: ite.name,
+                  file: this.imgData[ite.ionic]
+                }
+              })
+            } else {
+              this.zhanghuData[item.key] = {
+                ionic: item.ionic,
+                name: item.name,
+                file: this.imgData[item.ionic]
+              }
+            }
+          })
         })
         .catch(function (error) {
           console.log(error);

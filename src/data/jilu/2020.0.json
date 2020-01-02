@@ -3,11 +3,13 @@
       "name": "雪碧",
       "ionic": "yinliao",
       "cost": 3.50,
+      "from": "huabeiyue",
       "time": "2020-01-01 20:28"
     },
     {
-      "name": "投资收益",
-      "ionic": "yinliao",
+      "name": "投资收益啦啦啦啦啦啦啦",
+      "ionic": "licaishouyi",
+      "to": "licaichanpin",
       "get": 3.50,
       "time": "2020-01-01 20:28"
     }
@@ -15,12 +17,14 @@
   [{
       "name": "可乐",
       "ionic": "yinliao",
+      "from": "huabeiyue",
       "cost": 3.50,
       "time": "2020-01-02 20:28"
     },
     {
       "name": "话费",
       "ionic": "huafei",
+      "from": "huabeiyue",
       "cost": 50.00,
       "time": "2020-01-02 20:28"
     }

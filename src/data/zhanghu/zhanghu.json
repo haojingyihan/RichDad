@@ -1,25 +1,36 @@
 [{
     "name": "支付宝",
+    "key": "zhifubao",
     "ionic": "zhifubao",
     "has": false,
     "children": [{
         "name": "花呗余额",
-        "ionic": "",
+        "key": "huabeiyue",
+        "ionic": "zhifubao",
         "has": 6838.09
       },
       {
         "name": "余额宝",
-        "ionic": "",
+        "key": "yuebao",
+        "ionic": "yuebao",
         "has": 472.66
       },
       {
         "name": "理财产品",
-        "ionic": "",
+        "key": "licaichanpin",
+        "ionic": "licaichanpin",
         "has": 1003.68
       },
       {
+        "name": "基金",
+        "key": "jijin",
+        "ionic": "jijin",
+        "has": 0
+      },
+      {
         "name": "黄金",
-        "ionic": "",
+        "key": "huangjin",
+        "ionic": "huangjin",
         "has": 546.65
       }
     ]
@@ -27,25 +38,30 @@
   },
   {
     "name": "微信",
+    "key": "weixin",
     "ionic": "weixin",
     "has": 39.52
   },
   {
     "name": "交通卡",
-    "ionic": "",
+    "key": "jiaotongka",
+    "ionic": "jiaotong",
     "has": 23.80
   },
   {
     "name": "银行卡",
-    "ionic": "",
+    "key": "yinhangka",
+    "ionic": "yinhangka",
     "has": false,
     "children": [{
         "name": "招商银行",
+        "key": "zhaoshangyinhang",
         "ionic": "zhaoshangyinhang",
         "has": 4.00
       },
       {
         "name": "建设银行",
+        "key": "jiansheyinhang",
         "ionic": "jiansheyinhang",
         "has": 1.36
       }

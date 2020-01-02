@@ -92,6 +92,46 @@
     "name": "话费充值",
     "key": "huafei",
     "file": "huafei.svg"
+  },
+  {
+    "name": "银行卡",
+    "key": "yinhangka",
+    "file": "yinhangka.svg"
+  },
+  {
+    "name": "黄金",
+    "key": "huangjin",
+    "file": "huangjin.svg"
+  },
+  {
+    "name": "基金",
+    "key": "jijin",
+    "file": "jijin.svg"
+  },
+  {
+    "name": "理财产品",
+    "key": "licaichanpin",
+    "file": "licaichanpin.svg"
+  },
+  {
+    "name": "余额宝",
+    "key": "yuebao",
+    "file": "yuebao.svg"
+  },
+  {
+    "name": "交通",
+    "key": "jiaotong",
+    "file": "jiaotong.svg"
+  },
+  {
+    "name": "理财收益",
+    "key": "licaishouyi",
+    "file": "licaishouyi.svg"
+  },
+  {
+    "name": "理财亏损",
+    "key": "licaikuisun",
+    "file": "licaikuisun.svg"
   }
 
 ]

@@ -11,44 +11,64 @@
 
 <body>
   <!--作者：刘昊；
-	时间：19.08.04-
+	时间：20.01.01-
     描述：穷爸爸富爸爸；-->
   <div id="app" style="position: relative;">
     <el-tabs v-model="editableTabsValue" tab-position="right" @tab-click="getData">
       <el-tab-pane v-for="(item, index) in editableTabs" :key="item.name" :label="item.title" :name="item.name">
         <div class="gundongtiao" style="height: calc(100vh - 20px); overflow-y: auto;">
           <div class="block" v-if="editableTabsValue == 1">
-            <el-timeline v-if="!loadingtimeline">
-              <el-timeline-item v-for="item in timelineData" v-if="item.cost" :timestamp="item.time" placement="top"
-                type="danger" icon="el-icon-minus">
-                <el-card :span="8">
-                  <img :src="item.allfile" style="position: absolute;
-                                right: 25px;">
-                  <h4>{{item.name}}</h4>
-                  <p>花费{{item.cost}}元</p>
-                </el-card>
-              </el-timeline-item>
-              <el-timeline-item class="getMoney" v-if="item.get" v-for="item in timelineData" :timestamp="item.time"
-                placement="top" type="success" icon="el-icon-plus">
-                <el-card :span="8">
-                  <img :src="item.allfile" style="position: absolute;
-                                right: 25px;">
-                  <h4>{{item.name}}</h4>
-                  <p>获取{{item.get}}元</p>
+            <el-timeline v-loading="loadingtimeline" :reverse="timelinereverse">
+              <el-timeline-item v-for="item in timelineData" :class="{'getMoney': !item.cost }" :timestamp="item.time"
+                placement="top" :type="item.cost ? 'danger' : 'success'"
+                :icon="item.cost ? 'el-icon-minus' : 'el-icon-plus'">
+                <el-card>
+                  <img :src="item.mainfile" class="cardimg1">
+                  <img :src="item.from_to.file" class="cardimg2">
+                  <p class="cardtitle">{{item.name}}</pclass="cardtitle">
+                    <p class="cardwhere" v-if="item.cost">FROM</p>
+                    <p class="cardwhere" v-else>TO</p>
+                    <p v-if="item.cost">花费{{item.cost | translateNum}}元</p>
+                    <p v-else>获取{{item.get | translateNum}}元</p>
                 </el-card>
               </el-timeline-item>
             </el-timeline>
           </div>
+          <div class="block gundongtiao" style="width: 30%;    height: calc(100vh - 20px);
+          overflow-y: auto;" v-if="editableTabsValue == 2">
+            <el-tree :data="zhanghuShow" node-key="key" default-expand-all :props="defaultProps">
+              <div slot-scope="{ node, data }" class="zhanghutreenode">
+                <img class="treenodeimg" :src="imgData[data.ionic]">
+                <span style="    display: block;
+                position: absolute;
+                top: calc(50% - 11px);
+                left: 50px;">{{ data.name }}</span>
+                <span style="    position: absolute;
+                display: block;
+                right: 30px;
+                top: calc(50% - 11px);" v-if="data.has">{{data.has | translateNum}}</span>
+              </div>
+            </el-tree>
+          </div>
+          <div id="zhanghuecharts" style="width: 65%;
+              height: calc(100vh - 20px);
+              position: absolute;
+              left: 32%;
+              top: 0;" v-show="editableTabsValue == 2">
+          </div>
         </div>
       </el-tab-pane>
     </el-tabs>
+    <el-button v-if="editableTabsValue == 1" type="primary" @click="timelinereverse = !timelinereverse" style="position: fixed;
+        right: 6px;bottom: 6px; padding: 12px 12px;" icon="el-icon-sort">
+    </el-button>
     <el-button v-if="editableTabsValue == 1  && !card" @click="card = true" style="position: absolute;
         top: 6px;padding: 5px;">
       展开
     </el-button>
     <el-card class="box-card" v-if="(editableTabsValue == 1) && card">
       <div slot="header" class="clearfix">
-        <span>添加{{editableTabsTitle.title}}</span>
+        <span>添加收支记录</span>
         <el-button style="float: right; padding: 3px 0" type="text" @click="card = false">折叠</el-button>
       </div>
       <div>
